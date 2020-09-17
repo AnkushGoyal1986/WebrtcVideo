@@ -11,16 +11,13 @@ function attachAudioSink(){
 	(async () => {   
   await navigator.mediaDevices.getUserMedia({audio: true, video: true});   
   let devices = await navigator.mediaDevices.enumerateDevices();   
-  console.log(devices.filter(d => d.kind === 'audiooutput'));
+  devices = devices.filter(d => d.kind === 'audiooutput');
+
+  //console.log(devices);
+
+  console.log(devices[1]['deviceId']);
   
 })();
-
-// console.log('Ankush');
-
-
-	// let devices = await navigator.mediaDevices.enumerateDevices();   
-
-	// console.log(devices.filter(d => d.kind === 'audiooutput'));
   
 }
 
