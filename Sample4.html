@@ -1,15 +1,26 @@
 <html>
 <body>
 <div></div>
-<button onclick="">Attach Audio Sink</button>
+<button onclick="attachAudioSink()">Attach Audio Sink</button>
 <video autoplay></video>
 </body>
 
 <script>
-function async attachAudioSink(){
-	let devices = await navigator.mediaDevices.enumerateDevices();   
+function attachAudioSink(){
 
-	console.log(devices.filter(d => d.kind === 'audiooutput'));
+	(async () => {   
+  await navigator.mediaDevices.getUserMedia({audio: true, video: true});   
+  let devices = await navigator.mediaDevices.enumerateDevices();   
+  console.log(devices.filter(d => d.kind === 'audiooutput'));
+  
+})();
+
+// console.log('Ankush');
+
+
+	// let devices = await navigator.mediaDevices.enumerateDevices();   
+
+	// console.log(devices.filter(d => d.kind === 'audiooutput'));
   
 }
 
