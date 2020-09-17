@@ -1,5 +1,8 @@
+<html>
+<body>
 <div></div>
 <video autoplay></video>
+</body>
 
 <script>
 const constraints = {
@@ -17,12 +20,12 @@ const divs = document.querySelector('div');
   console.log(devices); 
 })();
 
-// navigator.mediaDevices.getUserMedia(constraints).
-//   then(
-//   	(stream) => {video.srcObject = stream}
+navigator.mediaDevices.getUserMedia(constraints).
+  then(
+  	(stream) => {video.srcObject = stream}
 
 
-// );
+);
 
 // navigator.mediaDevices.enumerateDevices()
 // .then(function(devices) {
@@ -39,3 +42,4 @@ const divs = document.querySelector('div');
 
 
 </script>
+</html>
