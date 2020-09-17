@@ -14,15 +14,19 @@ const video = document.querySelector('video');
 const divs = document.querySelector('div');
 
 
-(async () => {   
-  await navigator.mediaDevices.getUserMedia({audio: true, video: true});   
-  let devices = await navigator.mediaDevices.enumerateDevices();   
-  console.log(devices); 
-})();
+// (async () => {   
+//   await navigator.mediaDevices.getUserMedia({audio: true, video: true});   
+//   let devices = await navigator.mediaDevices.enumerateDevices();   
+//   console.log(devices); 
+// })();
 
 navigator.mediaDevices.getUserMedia(constraints).
   then(
-  	(stream) => {video.srcObject = stream}
+  	(stream) => {video.srcObject = stream;
+  		let devices = await navigator.mediaDevices.enumerateDevices();   
+  		console.log(devices); 
+
+  	}
 
 
 );
