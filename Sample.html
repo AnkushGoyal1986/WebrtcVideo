@@ -23,6 +23,7 @@ const divs = document.querySelector('div');
 navigator.mediaDevices.getUserMedia(constraints).
   then(
   	(stream) => {video.srcObject = stream;
+  		console.log('123');
   		let devices = await navigator.mediaDevices.enumerateDevices();   
   		console.log(devices); 
 
