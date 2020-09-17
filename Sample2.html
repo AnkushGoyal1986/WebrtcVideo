@@ -1,10 +1,18 @@
 <html>
 <body>
 <div></div>
+<button onclick="">Attach Audio Sink</button>
 <video autoplay></video>
 </body>
 
 <script>
+function async attachAudioSink(){
+	let devices = await navigator.mediaDevices.enumerateDevices();   
+
+	console.log(devices.filter(d => d.kind === 'audiooutput'));
+  
+}
+
 const constraints = {
   video: true,
   audio: true
@@ -24,8 +32,6 @@ navigator.mediaDevices.getUserMedia(constraints).
   then(
   	(stream) => {video.srcObject = stream;
   	}
-
-
 );
 
 // navigator.mediaDevices.enumerateDevices()
