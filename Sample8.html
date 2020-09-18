@@ -24,6 +24,10 @@ function attachAudioSink(){
   
 }
 
+const constraints1 = {
+  video: true,  
+  audio: true
+};
 const constraints = {
   video: true,  
   audio: {deviceId: "default"}
@@ -39,7 +43,7 @@ const divs = document.querySelector('div');
   console.log(devices); 
 })();
 
-navigator.mediaDevices.getUserMedia(constraints).
+navigator.mediaDevices.getUserMedia(constraints1).
   then(
   	(stream) => {video.srcObject = stream;
   	}
