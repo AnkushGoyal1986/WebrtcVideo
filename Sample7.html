@@ -9,7 +9,7 @@
 function attachAudioSink(){
 
 	(async () => {   
-  await navigator.mediaDevices.getUserMedia({audio: true, video: true});   
+  await navigator.mediaDevices.getUserMedia({audio: {deviceId: "default"}, video: true});   
   let devices = await navigator.mediaDevices.enumerateDevices();   
   devices = devices.filter(d => d.kind === 'audiooutput');
 
@@ -25,8 +25,8 @@ function attachAudioSink(){
 }
 
 const constraints = {
-  video: true,
-  audio: true
+  video: true,  
+  audio: {deviceId: "default"}
 };
 
 const video = document.querySelector('video');
@@ -44,20 +44,5 @@ navigator.mediaDevices.getUserMedia(constraints).
   	(stream) => {video.srcObject = stream;
   	}
 );
-
-// navigator.mediaDevices.enumerateDevices()
-// .then(function(devices) {
-//   devices.forEach(function(device) {  	
-//   	console.log(device);
-//   	// divs.appendChild(device.kind + ": " + device.label +
-//    //              " id = " + device.deviceId);
-//     console.log(device.kind + ": " + device.label + " id = " + device.deviceId);
-//   });
-// })
-// .catch(function(err) {
-//   console.log(err.name + ": " + err.message);
-// });
-
-
 </script>
 </html>
