@@ -1,0 +1,52 @@
+<html>
+<body>
+<div></div>
+<button onclick="attachAudioSink()">Attach Audio Sink</button>
+<video autoplay></video>
+</body>
+
+<script>
+function attachAudioSink(){
+
+	(async () => {   
+  await navigator.mediaDevices.getUserMedia({audio: {deviceId: "default"}, video: true});   
+  let devices = await navigator.mediaDevices.enumerateDevices();   
+  devices = devices.filter(d => d.kind === 'audiooutput');
+
+  console.log(devices[1]['deviceId']);
+
+  const video = document.querySelector('video');
+  video.setSinkId(devices[1]['deviceId']);
+
+  console.log('Done Setting');
+  
+})();
+  
+}
+
+const constraints1 = {
+  video: true,  
+  audio: true
+};
+const constraints = {
+  video: true,  
+  audio: {deviceId: "default"}
+};
+
+const video = document.querySelector('video');
+const divs = document.querySelector('div');
+
+
+(async () => {   
+  await navigator.mediaDevices.getUserMedia({audio: true, video: true});   
+  let devices = await navigator.mediaDevices.enumerateDevices();   
+  console.log(devices); 
+})();
+
+navigator.mediaDevices.getUserMedia(constraints1).
+  then(
+  	(stream) => {video.srcObject = stream;
+  	}
+);
+</script>
+</html>
